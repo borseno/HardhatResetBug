@@ -1,6 +1,9 @@
 # HardhatResetBug
 Minimal repro for hardhat_reset bug
 
+## UPDATE
+The issue was about serialization vs hardhat itself. The master branch has been updated with the correct code, whereas the issue code is located in the issue branch.
+
 The issue is, that we attempt to reset to a block X (X > 0), but instead, it resets to the 0th block.
 
 ## Steps to reproduce:

@@ -35,7 +35,7 @@ type HardhatResetInput() =
 type HardhatReset(client) = 
     inherit RpcRequestResponseHandler<bool>(client, "hardhat_reset")
 
-    member __.SendRequestAsync (input:HardhatResetInput) (id:obj) = base.SendRequestAsync(id, input);
+    member __.SendRequestAsync (input:HardhatResetInput) (?id:obj) = base.SendRequestAsync(id, input);
 
 [<EntryPoint>]
 let main argv =
@@ -45,7 +45,7 @@ let main argv =
     sprintf "Before: %A" |> printBlockNumber web3
 
     let input = HardhatResetInput(Forking=HardhatForkInput(BlockNumber=12330245UL,JsonRpcUrl=alchemyKey))
-    HardhatReset(web3.Client).SendRequestAsync input null |> runNow |> printfn "result: %b"
+    HardhatReset(web3.Client).SendRequestAsync input None |> runNow |> printfn "result: %b"
     
     // print block number after hardhat_reset
     sprintf "After: %A" |> printBlockNumber web3

@@ -1,5 +1,6 @@
 # HardhatResetBug
 Minimal repro for hardhat_reset bug
+
 The issue is, that we attempt to reset to a block X (X > 0), but instead, it resets to the 0th block.
 
 ## UPDATE
